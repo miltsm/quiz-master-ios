@@ -18,9 +18,9 @@ final class Category {
         self.id = id
         self.name = name
         difficulties =  [
-            Difficulty(level: 1),
-            Difficulty(level: 2),
-            Difficulty(level: 3)
+            Difficulty(level: .easy),
+            Difficulty(level: .medium),
+            Difficulty(level: .hard)
         ]
     }
 }

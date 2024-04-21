@@ -16,7 +16,7 @@ struct CategoryDetail : View {
     var body: some View {
         VStack {
             Spacer()
-            LevelSummaryCard(difficulty: difficulty)
+            LevelSummaryCard(category: category, difficulty: difficulty)
         }
         .padding(.horizontal, 20)
         .padding(.bottom, 30)

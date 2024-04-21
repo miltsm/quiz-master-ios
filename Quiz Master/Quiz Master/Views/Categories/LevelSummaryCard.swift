@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct LevelSummaryCard: View {
+    @EnvironmentObject var router : Router
+    
+    var category: Category
     var difficulty: Difficulty
+    
     var body: some View {
         VStack {
             HStack {
-                Text("Level \(difficulty.level)").font(.largeTitle)
+                Text("Level \(difficulty.level.rawValue)").font(.largeTitle)
                 Spacer()
                 VStack {
                     VStack {
@@ -26,7 +30,12 @@ struct LevelSummaryCard: View {
                     }
                 }
             }
-            Button(action: {}) {
+//            NavigationLink(destination: SessionView()){
+//                Label("BEGIN", systemImage: "rectangle.stack.badge.play.fill")
+//            }
+            Button(action: {
+                router.navigate(to: .session(category: category, level: difficulty.level))
+            }) {
                 Text("Begin").frame(maxWidth: .infinity).font(.title2)
             }
             .buttonStyle(.borderedProminent)
@@ -45,7 +54,7 @@ struct LevelSummaryCard: View {
 #Preview {
     do {
         let previewer = try Previewer()
-        return LevelSummaryCard(difficulty: previewer.categories[0].difficulties[0])
+        return LevelSummaryCard(category: previewer.categories[0], difficulty: previewer.categories[0].difficulties[0])
     } catch {
         return Text("Error")
     }

@@ -16,7 +16,7 @@ struct CategoryRow: View {
             Text(category.name)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(category.difficulties.sorted{ $0.level < $1.level }) { difficulty in
+                    ForEach(category.difficulties.sorted{ $0.level.rawValue < $1.level.rawValue }) { difficulty in
                         NavigationLink {
                             CategoryDetail(category: category, difficulty: difficulty)
                         } label: {

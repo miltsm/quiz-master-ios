@@ -9,7 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct CategoryList: View {
+    
     @Query(sort: \Category.name) var categories: [Category]
+    
     var body: some View {
         NavigationSplitView {
             List(categories) { category in

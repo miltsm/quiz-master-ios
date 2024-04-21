@@ -7,13 +7,20 @@
 
 import SwiftData
 
+enum Level: Int, Codable {
+    case easy = 1
+    case medium = 2
+    case hard = 3
+}
+
 @Model
 final class Difficulty {
-    var level: Int
+    
+    var level: Level
     var score: Int?
     var category: Category?
     
-    init(level: Int, score: Int? = nil, category: Category? = nil) {
+    init(level: Level, score: Int? = nil, category: Category? = nil) {
         self.level = level
         self.score = score
         self.category = category

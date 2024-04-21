@@ -8,7 +8,6 @@
 import SwiftUI
 
 @main
-@MainActor
 struct Quiz_MasterApp: App {
     var body: some Scene {
         WindowGroup {
