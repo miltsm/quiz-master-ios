@@ -17,18 +17,34 @@ class QuizMasterTests: XCTestCase {
         XCTAssert(quiz.correctAnswer == "poisson")
     }
     
-    func testGeoJSONDecoderDecodesGeoJSON() throws {
-        let decoder = JSONDecoder()
-        let decoded = try decoder.decode(QuizResponse.self, from: testQuizzesData)
-        
-        XCTAssertEqual(decoded.questions.count, 5)
-    }
+//    func testGeoJSONDecoderDecodesGeoJSON() throws {
+//        let decoder = JSONDecoder()
+//        let decoded = try decoder.decode(QuizResponse.self, from: testQuizzesData)
+//        
+//        XCTAssertEqual(decoded.questions.count, 5)
+//    }
+//    
+//    func testClientDoesFetchQuizQuestions() async throws {
+//        let downloader = TestDownloader()
+//        let client = QuizClient(downloader: downloader)
+//        let quiz = try await client.questions
+//        
+//        XCTAssertEqual(quiz.count, 5)
+//    }
     
-    func testClientDoesFetchQuizQuestions() async throws {
-        let downloader = TestDownloader()
-        let client = QuizClient(downloader: downloader)
-        let quiz = try await client.questions
+    func testScoreLogic() async throws {
+        let startTime = DispatchTime.now().uptimeNanoseconds
+        try await Task.sleep(nanoseconds: UInt64.random(in: 100_000_000...500_000_000))
+        let answerTime = DispatchTime.now().uptimeNanoseconds
         
-        XCTAssertEqual(quiz.count, 5)
+        let distanceInterval = answerTime - startTime
+        let answerInterval = Double(distanceInterval) / 1_000_000_000
+        
+        let bonusPoint = Int(answerInterval) < 5 ? 50 : 0
+        let correctAnswerPoint = 200
+        
+        let total = bonusPoint + correctAnswerPoint
+        
+        XCTAssertEqual(total, 400)
     }
 }

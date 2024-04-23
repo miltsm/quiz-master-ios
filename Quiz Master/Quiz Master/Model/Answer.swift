@@ -12,6 +12,5 @@ struct Answer {
     let isCorrect: Bool
     let score: Int
     let correctAnswer: String
-    let isQuickAndCorrectAnswer: Bool
     let timestamp: UInt64
 }

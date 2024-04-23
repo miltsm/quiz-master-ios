@@ -16,6 +16,22 @@ struct QuizPageView<Page: View>: View {
     var body: some View {
         VStack {
             HStack {
+                //MARK: TODO timer
+                Circle().frame(width: 50)
+                Spacer()
+                ZStack {
+                    VStack(alignment: .trailing) {
+                        Text("Score").font(.caption)
+                        Text("\(vm.totalScore)")
+                            .font(.largeTitle)
+                            .foregroundStyle(.teal)
+                    }
+                    //MARK: TODO bonus/deduct indicator
+                }
+            }
+            .padding(.horizontal, 20)
+            
+            HStack {
                 ForEach(0...9, id: \.self) { i in
                     switch(true) {
                     case currentPage == i:
@@ -58,6 +74,7 @@ struct QuizPageView<Page: View>: View {
         ],
         currentPage: .constant(0)
     )
+    .background(.yellow)
     .environmentObject(
         QuizViewModel(
             client: QuizClient(
