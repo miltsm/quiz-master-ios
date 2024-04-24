@@ -18,8 +18,8 @@ class QuizClient {
         let url = URL(string: "https://opentdb.com/api.php?amount=\(QUESTION_COUNT)&type=multiple&category=\(categoryId)&difficulty=\(level.self)")!
         let data = try await downloader.httpData(from: url)
         let respond = try decoder.decode(QuizResponse.self, from: data)
-        print(url)
-        print(respond)
+//        print(url)
+//        print(respond)
         return respond.questions
     }
     

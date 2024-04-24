@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D5556552BD87AD20023E888 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556542BD87AD20023E888 /* TimerView.swift */; };
 		7D9D02442BD3C7A700B4E649 /* LevelChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D02432BD3C7A700B4E649 /* LevelChip.swift */; };
 		7D9D02462BD3E8CD00B4E649 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D02452BD3E8CD00B4E649 /* CategoryList.swift */; };
 		7D9D02482BD3EAB500B4E649 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D02472BD3EAB500B4E649 /* Leaderboard.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D5556542BD87AD20023E888 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		7D9D02432BD3C7A700B4E649 /* LevelChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelChip.swift; sourceTree = "<group>"; };
 		7D9D02452BD3E8CD00B4E649 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		7D9D02472BD3EAB500B4E649 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				7DE5AAD22BD4DD4000C60222 /* QuizPageView.swift */,
 				7DE5AAD42BD4EECB00C60222 /* ChoiceButton.swift */,
 				7DE5AAD62BD5126500C60222 /* PageControl.swift */,
+				7D5556542BD87AD20023E888 /* TimerView.swift */,
 			);
 			path = Quizzes;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				7DE5AAD72BD5126500C60222 /* PageControl.swift in Sources */,
 				7DE5AAD32BD4DD4000C60222 /* QuizPageView.swift in Sources */,
 				7D9D02442BD3C7A700B4E649 /* LevelChip.swift in Sources */,
+				7D5556552BD87AD20023E888 /* TimerView.swift in Sources */,
 				7DE5AABB2BD4A58400C60222 /* QuizResponse.swift in Sources */,
 				7DC22B322BD36CD600CDBE5D /* AppContainer.swift in Sources */,
 				7DE5AAD52BD4EECB00C60222 /* ChoiceButton.swift in Sources */,

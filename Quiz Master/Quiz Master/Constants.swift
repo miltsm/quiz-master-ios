@@ -8,3 +8,4 @@
 import Foundation
 
 let QUESTION_COUNT = 10
+let MAX_TIMER_COUNT : Int = 60

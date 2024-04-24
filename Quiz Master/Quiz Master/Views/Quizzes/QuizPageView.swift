@@ -16,14 +16,16 @@ struct QuizPageView<Page: View>: View {
     var body: some View {
         VStack {
             HStack {
-                //MARK: TODO timer
-                Circle().frame(width: 50)
+                TimerView(
+                    progress: $vm.progress,
+                    timeLeft: $vm.secondsToCompletion
+                ).frame(width: 80)
                 Spacer()
                 ZStack {
                     VStack(alignment: .trailing) {
-                        Text("Score").font(.caption)
+                        Text("Score").font(.caption2)
                         Text("\(vm.totalScore)")
-                            .font(.largeTitle)
+                            .font(.title)
                             .foregroundStyle(.teal)
                     }
                     //MARK: TODO bonus/deduct indicator
