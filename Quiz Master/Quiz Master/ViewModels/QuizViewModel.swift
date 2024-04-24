@@ -16,6 +16,8 @@ class QuizViewModel: ObservableObject {
     private var quizStartTime: UInt64 = 0
     private var timer = Timer()
     
+    private var level = 1
+    
     @Published var questions: [Question] = []
     @Published var answers: [Answer] = []
     @Published var totalScore: Int = 0
@@ -33,6 +35,7 @@ class QuizViewModel: ObservableObject {
 extension QuizViewModel {
     @MainActor
     func fetchQuiz(categoryId: Int, level: Level) async throws {
+        self.level = level.rawValue
         let fetched = try await client.getQuiz(categoryId: categoryId, level: level)
         self.questions = fetched
         startTimer()
@@ -50,7 +53,7 @@ extension QuizViewModel {
         let answerInterval = Double(submitTime - beginTime) / 1_000_000_000
         
         let bonus = Int(answerInterval) < 5 && isCorrect ? BONUS_PTS : 0
-        let points = (isCorrect ? CORRECT_PTS : totalScore == 0 ? 0 : INCORRECT_PTS) + bonus
+        let points = ((isCorrect ? CORRECT_PTS : totalScore == 0 ? 0 : INCORRECT_PTS) + bonus) * level //scale by difficulty
         
         answers.append(
             Answer(
