@@ -16,24 +16,27 @@ struct ContentView: View {
     
     @StateObject var quizVM = QuizViewModel()
     
-    enum Tab {
-        case categories
-        case leaderboard
-    }
-    
     var body: some View {
         NavigationStack(path: $router.path) {
             TabView(selection: $selection) {
                 CategoryList().tabItem { Label("Quiz", systemImage: "checklist") }.tag(Tab.categories)
                 Leaderboard().tabItem { Label("Leaderboard", systemImage: "trophy") }.tag(Tab.leaderboard)
             }.navigationDestination(for: Router.Destination.self) { destination in
-                
                 switch destination {
                 case .session(let category, let level):
                     QuizView(
                         selectedCategory: category,
                         level: level
-                    ).environmentObject(quizVM)
+                    )
+                    .environmentObject(quizVM)
+                    .environmentObject(router)
+                case .result(let category, let level):
+                    ResultView(
+                        selectedCategory: category,
+                        level: level
+                    )
+                    .environmentObject(quizVM)
+                    .environmentObject(router)
                 }
             }
         }

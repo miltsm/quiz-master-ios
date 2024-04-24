@@ -23,6 +23,8 @@ class QuizViewModel: ObservableObject {
     @Published var totalScore: Int = 0
     @Published var progress: Float = 1.0
     @Published var secondsToCompletion = MAX_TIMER_COUNT
+    @Published var sessionEnded = false
+    @Published var timeTaken = 0
     
     let client: QuizClient
     
@@ -45,6 +47,7 @@ extension QuizViewModel {
 //MARK: Attempts keeping
 extension QuizViewModel {
     func submitAnswer(questionId: String, choice: Choice) {
+        
         let question = questions.first(where: { $0.id == questionId })!
         let isCorrect = question.correctAnswer == choice.answer
         let submitTime = DispatchTime.now().uptimeNanoseconds
@@ -66,13 +69,19 @@ extension QuizViewModel {
         )
       
         totalScore += points
+        
+        if answers.count == QUESTION_COUNT {
+            stopTimer()
+        }
     }
 }
 
 //MARK: Timer handler
 extension QuizViewModel {
     private func startTimer() {
+        //retry init
         quizStartTime = DispatchTime.now().uptimeNanoseconds
+        
         timer = Timer.scheduledTimer(
             withTimeInterval: 1.0,
             repeats: true,
@@ -82,12 +91,39 @@ extension QuizViewModel {
                 self.progress = Float(self.secondsToCompletion) / Float(60.0)
                 print("timer -> \(secondsToCompletion) progress -> \(progress)")
                 
-                if (secondsToCompletion < 0) {
-                    timer.invalidate()
-                    secondsToCompletion = 0
-                    progress = 0
+                if secondsToCompletion < 0 {
+                    stopTimer()
+                    if !sessionEnded {
+                        sessionEnded = true
+                    }
                 }
             }
         )
+    }
+    
+    private func stopTimer() {
+        timer.invalidate()
+    }
+    
+    func calculateTimeTaken() {
+//        guard let completeTime = answers.last?.timestamp else {
+//            return
+//        }
+        let diff = MAX_TIMER_COUNT - secondsToCompletion
+        self.timeTaken = diff == 0 ? MAX_TIMER_COUNT : diff
+        
+        
+    }
+}
+
+//session clean
+extension QuizViewModel {
+    func cleanSession() {
+        timer.invalidate()
+        sessionEnded = false
+        answers.removeAll()
+        totalScore = 0
+        secondsToCompletion = MAX_TIMER_COUNT
+        progress = 1
     }
 }

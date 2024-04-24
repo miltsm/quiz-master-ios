@@ -12,6 +12,7 @@ struct QuizView: View {
     var level: Level
     
     @EnvironmentObject var vm : QuizViewModel
+    @EnvironmentObject var router: Router
     @State var isLoading = false
     @State private var error: QuizError?
     @State private var hasError = false
@@ -51,6 +52,21 @@ struct QuizView: View {
         .task {
             runLoadTask()
         }
+        .onReceive(vm.$sessionEnded, perform: { hasEnd in
+            if hasEnd {
+                router.popTo(
+                    to: .result(category: selectedCategory, level: level)
+                )
+            }
+        })
+        .onDisappear(perform: {
+            if !vm.sessionEnded {
+                vm.cleanSession()
+            } else {
+                //MARK: to prevent retry navigation bug
+                vm.sessionEnded = false
+            }
+        })
     }
 }
 
@@ -75,15 +91,22 @@ extension QuizView {
     }
 }
 
-#Preview {
-    QuizView(
-        selectedCategory: Category(id: 9, name: "Test"),
-        level: Level.easy
-    ).environmentObject(
-        QuizViewModel(
-            client: QuizClient(
-                downloader: TestDownloader()
-            )
-        )
-    )
-}
+//MARK: Uncomment preview below will trigger timer
+//#Preview {
+//    do {
+//        let previewer = try Previewer()
+//        return QuizView(
+//            selectedCategory: previewer.categories[0],
+//            level: Level.easy
+//        ).environmentObject(
+//            QuizViewModel(
+//                client: QuizClient(
+//                    downloader: TestDownloader()
+//                )
+//            )
+//        )
+//        .environmentObject(Router())
+//    } catch {
+//        return Text("Error")
+//    }
+//}

@@ -11,6 +11,7 @@ import SwiftUI
 final class Router: ObservableObject {
     enum Destination : Hashable {
         case session(category: Category, level: Level)
+        case result(category: Category, level: Level)
     }
     
     @Published var path: NavigationPath
@@ -25,5 +26,10 @@ final class Router: ObservableObject {
     
     func navigateUp() {
         path.removeLast()
+    }
+    
+    func popTo(to destination: Destination) {
+        navigateUp()
+        navigate(to: destination)
     }
 }

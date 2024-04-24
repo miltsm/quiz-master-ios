@@ -11,7 +11,6 @@ import SwiftData
 @MainActor
 let appContainer : ModelContainer = {
     do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Category.self, Difficulty.self)
         
         //MARK: Check if categories have been pre-populated

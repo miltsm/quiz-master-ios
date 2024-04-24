@@ -12,7 +12,8 @@ struct QuizCard: View {
     
     @Binding var currentPage: Int
     
-    @EnvironmentObject var vm : QuizViewModel
+    @EnvironmentObject var vm: QuizViewModel
+    @EnvironmentObject var router: Router
     @State private var chosen: Choice?
     
     @State private var showResult: Bool = false
@@ -115,6 +116,9 @@ extension QuizCard {
             currentPage = currentPage + 1
         }
         //MARK: TODO redirect result screen
+        else {
+            vm.sessionEnded = true
+        }
     }
 }
 
