@@ -25,7 +25,7 @@ struct QuizView: View {
                 ProgressView()
                     .progressViewStyle(.circular)
             case !vm.questions.isEmpty && !isLoading:
-                QuizPageView(
+                QuizPage(
                     pages: vm.questions.map {
                         QuizCard(
                             question: $0,

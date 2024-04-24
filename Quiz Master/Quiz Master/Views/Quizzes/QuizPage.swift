@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct QuizPageView<Page: View>: View {
+struct QuizPage<Page: View>: View {
     var pages: [Page]
     @Binding var currentPage: Int
     
@@ -57,7 +57,7 @@ struct QuizPageView<Page: View>: View {
 }
 
 #Preview {
-    QuizPageView(
+    QuizPage(
         pages: [
             QuizCard(
                 question: Question(
