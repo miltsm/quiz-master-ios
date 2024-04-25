@@ -10,6 +10,7 @@ import SwiftUI
 struct NextLevelSheet: View {
     
     var selectedCategory: Category
+    @Binding var shouldDisplayNextLevel: Bool
     
     @EnvironmentObject var router: Router
     
@@ -41,8 +42,14 @@ struct NextLevelSheet: View {
 //                        }).first!
 //                    )
 //                )
+                //MARK: Dismiss modal - deadline constraint
+                shouldDisplayNextLevel = false
+                
             }, label: {
-                Text("Next level pls").frame(maxWidth: .infinity)
+                Text(
+                    //"Next level pls"
+                    "OK"
+                ).frame(maxWidth: .infinity)
             })
             .cornerRadius(20)
             .buttonStyle(.borderedProminent)
@@ -55,7 +62,10 @@ struct NextLevelSheet: View {
 #Preview {
     do {
         let previewer = try Previewer()
-        return NextLevelSheet(selectedCategory: previewer.categories[0])
+        return NextLevelSheet(
+            selectedCategory: previewer.categories[0],
+            shouldDisplayNextLevel: .constant(true)
+        )
             .environmentObject(Router())
     } catch {
         return Text("Error")

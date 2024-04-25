@@ -94,7 +94,8 @@ struct ResultView: View {
         .background(.yellow)
         .sheet(isPresented: $shouldDisplayNextLevelSheet, content: {
             NextLevelSheet(
-                selectedCategory: selectedCategory
+                selectedCategory: selectedCategory,
+                shouldDisplayNextLevel: $shouldDisplayNextLevelSheet
             ).presentationDetents(
                 [.fraction(0.3)]
             )
