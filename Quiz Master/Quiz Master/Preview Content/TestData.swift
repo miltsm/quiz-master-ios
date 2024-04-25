@@ -29,61 +29,121 @@ let testQuizzesData: Data = """
             {
                 "type": "multiple",
                 "difficulty": "easy",
-                "category": "General Knowledge",
-                "question": "What zodiac sign is represented by a pair of scales?",
-                "correct_answer": "Libra",
+                "category": "Animals",
+                "question": "By definition, where does an abyssopelagic animal live?",
+                "correct_answer": "At the bottom of the ocean",
                 "incorrect_answers": [
-                    "Aries",
-                    "Capricorn",
-                    "Sagittarius"
+                    "In the desert",
+                    "On top of a mountain",
+                    "Inside a tree"
                 ]
             },
             {
                 "type": "multiple",
                 "difficulty": "easy",
-                "category": "General Knowledge",
-                "question": "What kind of aircraft was developed by Igor Sikorsky in the United States in 1942?",
-                "correct_answer": "Helicopter",
+                "category": "Animals",
+                "question": "The Kākāpō is a large, flightless, nocturnal parrot native to which country?",
+                "correct_answer": "New Zealand",
                 "incorrect_answers": [
-                    "Stealth Blimp",
-                    "Jet",
-                    "Space Capsule"
+                    "South Africa",
+                    "Australia",
+                    "Madagascar"
                 ]
             },
             {
                 "type": "multiple",
                 "difficulty": "easy",
-                "category": "General Knowledge",
-                "question": "Waluigi&#039;s first appearance was in what game?",
-                "correct_answer": "Mario Tennis 64 (N64)",
+                "category": "Animals",
+                "question": "What is the name of a rabbit&#039;s abode?",
+                "correct_answer": "Burrow",
                 "incorrect_answers": [
-                    "Wario Land: Super Mario Land 3",
-                    "Mario Party (N64)",
-                    "Super Smash Bros. Ultimate"
+                    "Nest",
+                    "Den",
+                    "Dray"
                 ]
             },
             {
                 "type": "multiple",
                 "difficulty": "easy",
-                "category": "General Knowledge",
-                "question": "When someone is cowardly, they are said to have what color belly?",
-                "correct_answer": "Yellow",
+                "category": "Animals",
+                "question": "How many teeth does an adult rabbit have?",
+                "correct_answer": "28",
                 "incorrect_answers": [
-                    "Green",
-                    "Red",
-                    "Blue"
+                    "30",
+                    "26",
+                    "24"
                 ]
             },
             {
                 "type": "multiple",
                 "difficulty": "easy",
-                "category": "General Knowledge",
-                "question": "What was the name of the WWF professional wrestling tag team made up of the wrestlers Ax and Smash?",
-                "correct_answer": "Demolition",
+                "category": "Animals",
+                "question": "What is the collective noun for a group of crows?",
+                "correct_answer": "Murder",
                 "incorrect_answers": [
-                    "The Dream Team",
-                    "The Bushwhackers",
-                    "The British Bulldogs"
+                    "Pack",
+                    "Gaggle",
+                    "Herd"
+                ]
+            },
+            {
+                "type": "multiple",
+                "difficulty": "easy",
+                "category": "Animals",
+                "question": "How many legs do butterflies have?",
+                "correct_answer": "6",
+                "incorrect_answers": [
+                    "2",
+                    "4",
+                    "0"
+                ]
+            },
+            {
+                "type": "multiple",
+                "difficulty": "easy",
+                "category": "Animals",
+                "question": "What is Grumpy Cat&#039;s real name?",
+                "correct_answer": "Tardar Sauce",
+                "incorrect_answers": [
+                    "Sauce",
+                    "Minnie",
+                    "Broccoli"
+                ]
+            },
+            {
+                "type": "multiple",
+                "difficulty": "easy",
+                "category": "Animals",
+                "question": "What is the fastest  land animal?",
+                "correct_answer": "Cheetah",
+                "incorrect_answers": [
+                    "Lion",
+                    "Thomson&rsquo;s Gazelle",
+                    "Pronghorn Antelope"
+                ]
+            },
+            {
+                "type": "multiple",
+                "difficulty": "easy",
+                "category": "Animals",
+                "question": "What colour is the female blackbird?",
+                "correct_answer": "Brown",
+                "incorrect_answers": [
+                    "Black",
+                    "White",
+                    "Yellow"
+                ]
+            },
+            {
+                "type": "multiple",
+                "difficulty": "easy",
+                "category": "Animals",
+                "question": "What do you call a baby bat?",
+                "correct_answer": "Pup",
+                "incorrect_answers": [
+                    "Cub",
+                    "Chick",
+                    "Kid"
                 ]
             }
         ]

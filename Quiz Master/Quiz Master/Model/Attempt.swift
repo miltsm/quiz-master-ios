@@ -10,7 +10,7 @@ import SwiftData
 @Model
 class Attempt {
     let score: Int
-    let when: UInt64
+    let when: String
     let totalTimeTaken: Int
     let totalCorrectAnswer: Int
     let beatsMinScoreThreshold = false
@@ -19,7 +19,7 @@ class Attempt {
     
     init(
         score: Int,
-        when: UInt64,
+        when: String,
         totalTimeTaken: Int,
         totalCorrectAnswer: Int,
         beatsMinScoreThreshold: Bool

@@ -78,7 +78,7 @@ extension QuizViewModel {
     func getSessionAttempt() -> Attempt {
         return Attempt(
             score: totalScore,
-            when: quizStartTime,
+            when: Date().formatted(),
             totalTimeTaken: timeTaken,
             totalCorrectAnswer: answers.filter({ $0.isCorrect }).count,
             beatsMinScoreThreshold: totalScore > (SCORE_TO_BEAT * level)
