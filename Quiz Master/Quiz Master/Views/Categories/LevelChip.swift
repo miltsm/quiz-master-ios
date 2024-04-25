@@ -15,11 +15,13 @@ struct LevelChip: View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Level \(difficulty.level.rawValue)")
             HStack(alignment: .firstTextBaseline) {
-                Text("Score: \(difficulty.highScore ?? 0)").font(.caption)
+                Text("Score: \(difficulty.highScore ?? 0)")
+                    .font(.caption)
             }
         }
+        .foregroundStyle(difficulty.isUnlocked ? .black : .white)
         .frame(width: 140, height: 60)
-        .background(.yellow)
+        .background(difficulty.isUnlocked ? .yellow : .gray)
         .cornerRadius(5)
     }
 }

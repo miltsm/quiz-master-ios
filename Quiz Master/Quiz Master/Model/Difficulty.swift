@@ -20,10 +20,12 @@ final class Difficulty {
     var category: Category?
     var highScore: Int? = nil
     var bestTime: Int = 0
+    var isUnlocked = false
     var attempts: [Attempt] = []
     
     init(level: Level, category: Category? = nil) {
         self.level = level
         self.category = category
+        self.isUnlocked = level.rawValue == 1
     }
 }

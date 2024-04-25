@@ -59,6 +59,7 @@ struct LevelSummaryCard: View {
                 Text("Begin").frame(maxWidth: .infinity).font(.title2)
             }
             .buttonStyle(.borderedProminent)
+            .disabled(!selectedDiff.isUnlocked)
         }
         .padding(.all, 20)
         .cornerRadius(10)

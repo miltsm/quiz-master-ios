@@ -17,6 +17,8 @@ struct ResultView: View {
     @EnvironmentObject var vm : QuizViewModel
     @EnvironmentObject var router: Router
     
+    @State private var shouldDisplayNextLevelSheet = false
+    
     var body: some View {
         VStack {
             Spacer()
@@ -90,6 +92,13 @@ struct ResultView: View {
         }
         .padding(.all, 20)
         .background(.yellow)
+        .sheet(isPresented: $shouldDisplayNextLevelSheet, content: {
+            NextLevelSheet(
+                selectedCategory: selectedCategory
+            ).presentationDetents(
+                [.fraction(0.3)]
+            )
+        })
         .onAppear(perform: {
             saveResult()
         })
@@ -126,6 +135,13 @@ extension ResultView {
         
         newAttempt.difficulty = difficulty
         context.insert(newAttempt)
+        
+        if newAttempt.beatsMinScoreThreshold && difficulty.level != .hard {
+            selectedCategory.difficulties.filter({
+                !$0.isUnlocked
+            }).first?.isUnlocked = true
+            shouldDisplayNextLevelSheet = true
+        }
     }
 }
 
