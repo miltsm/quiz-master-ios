@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7D5556552BD87AD20023E888 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556542BD87AD20023E888 /* TimerView.swift */; };
 		7D5556592BD916350023E888 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556582BD916350023E888 /* ResultView.swift */; };
+		7D676DE12BD9A24300663FF6 /* Attempt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D676DE02BD9A24300663FF6 /* Attempt.swift */; };
 		7D9D02442BD3C7A700B4E649 /* LevelChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D02432BD3C7A700B4E649 /* LevelChip.swift */; };
 		7D9D02462BD3E8CD00B4E649 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D02452BD3E8CD00B4E649 /* CategoryList.swift */; };
 		7D9D02482BD3EAB500B4E649 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D02472BD3EAB500B4E649 /* Leaderboard.swift */; };
@@ -66,6 +67,7 @@
 /* Begin PBXFileReference section */
 		7D5556542BD87AD20023E888 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		7D5556582BD916350023E888 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		7D676DE02BD9A24300663FF6 /* Attempt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attempt.swift; sourceTree = "<group>"; };
 		7D9D02432BD3C7A700B4E649 /* LevelChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelChip.swift; sourceTree = "<group>"; };
 		7D9D02452BD3E8CD00B4E649 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		7D9D02472BD3EAB500B4E649 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				7DC22B232BD3403F00CDBE5D /* Category.swift */,
 				7DC22B2C2BD3658A00CDBE5D /* Difficulty.swift */,
 				7DE5AAD82BD52ABC00C60222 /* Answer.swift */,
+				7D676DE02BD9A24300663FF6 /* Attempt.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				7D9D02482BD3EAB500B4E649 /* Leaderboard.swift in Sources */,
 				7DE5AAD92BD52ABC00C60222 /* Answer.swift in Sources */,
 				7DEFB54B2BD3371000A792E2 /* Quiz_MasterApp.swift in Sources */,
+				7D676DE12BD9A24300663FF6 /* Attempt.swift in Sources */,
 				7D9D024B2BD3F68700B4E649 /* LevelSummaryCard.swift in Sources */,
 				7DC22B342BD3794600CDBE5D /* Previewer.swift in Sources */,
 				7DE5AACD2BD4D04300C60222 /* CategoryData.swift in Sources */,

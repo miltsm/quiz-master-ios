@@ -6,35 +6,55 @@
 //
 
 import SwiftUI
+import SwiftData
+import Foundation
 
 struct LevelSummaryCard: View {
     @EnvironmentObject var router : Router
     
-    var category: Category
-    var difficulty: Difficulty
+    private var selectedCategory: Category
+    private var selectedDiff: Difficulty
+    
+//    @Query()
+//    private var attempts: [Attempt]
+    
+    init(selectedCategory: Category, selectedDiff: Difficulty) {
+        self.selectedCategory = selectedCategory
+        self.selectedDiff = selectedDiff
+        
+//        _attempts = Query(
+//            filter: #Predicate<Attempt> { attempt in
+//                if let attemptLvl = attempt.difficulty {
+//                    return attemptLvl.level.rawValue == selectedDiff.level.rawValue
+//                } else {
+//                    return false
+//                }
+//            },
+//            animation: .default
+//        )
+    }
     
     var body: some View {
         VStack {
             HStack {
-                Text("Level \(difficulty.level.rawValue)").font(.largeTitle)
+                Text("Level \(selectedDiff.level.rawValue)").font(.largeTitle)
                 Spacer()
                 VStack {
-                    VStack {
+                    VStack {
                         Text("Total Score:").font(.caption)
-                        Text("\(difficulty.score ?? 0)").font(.headline)
+                        Text("\(selectedDiff.highScore ?? 0)").font(.headline)
                     }
                     .padding(.bottom, 10)
                     VStack {
                         Text("Best Time:").font(.caption)
-                        Text("00:00").font(.headline)
+                        Text("\(selectedDiff.bestTime)s").font(.headline)
                     }
                 }
             }
-//            NavigationLink(destination: SessionView()){
-//                Label("BEGIN", systemImage: "rectangle.stack.badge.play.fill")
-//            }
             Button(action: {
-                router.navigate(to: .session(category: category, level: difficulty.level))
+                router.navigate(
+                    to: .session(category: selectedCategory, diff: selectedDiff)
+                )
             }) {
                 Text("Begin").frame(maxWidth: .infinity).font(.title2)
             }
@@ -54,7 +74,10 @@ struct LevelSummaryCard: View {
 #Preview {
     do {
         let previewer = try Previewer()
-        return LevelSummaryCard(category: previewer.categories[0], difficulty: previewer.categories[0].difficulties[0])
+        return LevelSummaryCard(
+            selectedCategory: previewer.categories[0],
+            selectedDiff: previewer.categories[0].difficulties[0]
+        )
     } catch {
         return Text("Error")
     }

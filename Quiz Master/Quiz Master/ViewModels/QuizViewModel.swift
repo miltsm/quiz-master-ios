@@ -74,6 +74,16 @@ extension QuizViewModel {
             stopTimer()
         }
     }
+    
+    func getSessionAttempt() -> Attempt {
+        return Attempt(
+            score: totalScore,
+            when: quizStartTime,
+            totalTimeTaken: timeTaken,
+            totalCorrectAnswer: answers.filter({ $0.isCorrect }).count,
+            beatsMinScoreThreshold: totalScore > (SCORE_TO_BEAT * level)
+        )
+    }
 }
 
 //MARK: Timer handler
@@ -116,7 +126,7 @@ extension QuizViewModel {
     }
 }
 
-//session clean
+//MARK: session clean
 extension QuizViewModel {
     func cleanSession() {
         timer.invalidate()

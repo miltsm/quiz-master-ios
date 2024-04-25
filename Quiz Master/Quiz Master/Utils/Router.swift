@@ -10,8 +10,8 @@ import SwiftUI
 
 final class Router: ObservableObject {
     enum Destination : Hashable {
-        case session(category: Category, level: Level)
-        case result(category: Category, level: Level)
+        case session(category: Category, diff: Difficulty)
+        case result(category: Category, diff: Difficulty)
     }
     
     @Published var path: NavigationPath

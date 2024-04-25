@@ -8,24 +8,19 @@
 import SwiftUI
 
 struct LevelChip: View {
-    //@EnvironmentObject var router: Router
     
     var difficulty: Difficulty
     
     var body: some View {
-//        Button(action: {
-//            router.navigate(to: .session)
-//        }, label: {
-            VStack(alignment: .leading, spacing: 0) {
-                Text("Level \(difficulty.level.rawValue)")
-                HStack(alignment: .firstTextBaseline) {
-                    Text("Score: \(difficulty.score ?? 0)").font(.caption)
-                }
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Level \(difficulty.level.rawValue)")
+            HStack(alignment: .firstTextBaseline) {
+                Text("Score: \(difficulty.highScore ?? 0)").font(.caption)
             }
-            .frame(width: 140, height: 60)
-            .background(.yellow)
-            .cornerRadius(5)
-        //})
+        }
+        .frame(width: 140, height: 60)
+        .background(.yellow)
+        .cornerRadius(5)
     }
 }
 

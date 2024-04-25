@@ -11,18 +11,17 @@ struct ResultView: View {
     
     //retry params
     @Bindable var selectedCategory: Category
-    var level: Level
-    
-    @EnvironmentObject var vm : QuizViewModel
-    @EnvironmentObject var router: Router
+    var difficulty: Difficulty
     
     @Environment(\.modelContext) private var context
+    @EnvironmentObject var vm : QuizViewModel
+    @EnvironmentObject var router: Router
     
     var body: some View {
         VStack {
             Spacer()
             VStack(alignment: .leading) {
-                Text("\(selectedCategory.name) - Level \(level.rawValue)")
+                Text("\(selectedCategory.name) - Level \(difficulty.level.rawValue)")
                     .background(.pink)
                     .foregroundColor(.white)
                     .font(.caption)
@@ -69,7 +68,7 @@ struct ResultView: View {
             HStack {
                 Button(action: {
                     router.popTo(
-                        to: .session(category: selectedCategory, level: level)
+                        to: .session(category: selectedCategory, diff: difficulty)
                     )
                 }) {
                     VStack {
@@ -92,8 +91,7 @@ struct ResultView: View {
         .padding(.all, 20)
         .background(.yellow)
         .onAppear(perform: {
-//            selectedCategory.difficulties.first(where: { $0.level == level })?.score = vm.totalScore
-            vm.calculateTimeTaken()
+            saveResult()
         })
         .onDisappear(perform: {
             vm.cleanSession()
@@ -101,11 +99,44 @@ struct ResultView: View {
     }
 }
 
+extension ResultView {
+    private func saveResult() {
+        vm.calculateTimeTaken()
+       
+        let newAttempt = vm.getSessionAttempt()
+        
+        let isNewHighScore = difficulty.attempts.filter(
+            { $0.score > newAttempt.score }
+        ).isEmpty
+        
+        let isBestTime = difficulty.attempts.filter({
+            $0.totalTimeTaken > 0 && $0.totalTimeTaken < newAttempt.totalTimeTaken
+        }).isEmpty && newAttempt.beatsMinScoreThreshold
+        
+        print("is new highscore: \(isNewHighScore)")
+        print("is new best time: \(isBestTime)")
+        
+        if isNewHighScore {
+            difficulty.highScore = newAttempt.score
+        }
+        
+        if isBestTime {
+            difficulty.bestTime = newAttempt.totalTimeTaken
+        }
+        
+        newAttempt.difficulty = difficulty
+        context.insert(newAttempt)
+    }
+}
+
 #Preview {
     do {
         let previewer = try Previewer()
         return ResultView(
-            selectedCategory: previewer.categories[0], level: Level.easy
+            selectedCategory: previewer.categories[0],
+            difficulty: Difficulty(
+                level: previewer.categories[0].difficulties[0].level
+            )
         )
         .environmentObject(
             QuizViewModel(
@@ -113,6 +144,7 @@ struct ResultView: View {
             )
         )
         .environmentObject(Router())
+        .modelContainer(previewer.container)
     } catch {
         return Text("Error")
     }

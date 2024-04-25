@@ -23,17 +23,17 @@ struct ContentView: View {
                 Leaderboard().tabItem { Label("Leaderboard", systemImage: "trophy") }.tag(Tab.leaderboard)
             }.navigationDestination(for: Router.Destination.self) { destination in
                 switch destination {
-                case .session(let category, let level):
+                case .session(let category, let diff):
                     QuizView(
                         selectedCategory: category,
-                        level: level
+                        difficulty: diff
                     )
                     .environmentObject(quizVM)
                     .environmentObject(router)
-                case .result(let category, let level):
+                case .result(let category, let diff):
                     ResultView(
                         selectedCategory: category,
-                        level: level
+                        difficulty: diff
                     )
                     .environmentObject(quizVM)
                     .environmentObject(router)

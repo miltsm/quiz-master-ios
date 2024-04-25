@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QuizView: View {
     var selectedCategory: Category
-    var level: Level
+    var difficulty: Difficulty
     
     @EnvironmentObject var vm : QuizViewModel
     @EnvironmentObject var router: Router
@@ -55,7 +55,7 @@ struct QuizView: View {
         .onReceive(vm.$sessionEnded, perform: { hasEnd in
             if hasEnd {
                 router.popTo(
-                    to: .result(category: selectedCategory, level: level)
+                    to: .result(category: selectedCategory, diff: difficulty)
                 )
             }
         })
@@ -74,7 +74,7 @@ extension QuizView {
     func runLoadTask() {
         Task {
             await loadQuiz(
-                categoryId: selectedCategory.id, level: level
+                categoryId: selectedCategory.id, level: difficulty.level
             )
         }
     }

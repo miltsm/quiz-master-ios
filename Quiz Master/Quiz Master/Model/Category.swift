@@ -9,8 +9,8 @@ import SwiftData
 
 @Model
 final class Category {
-    var id: Int
-    var name: String
+    let id: Int
+    let name: String
     @Relationship(deleteRule: .cascade, inverse: \Difficulty.category)
     var difficulties = [Difficulty]()
     

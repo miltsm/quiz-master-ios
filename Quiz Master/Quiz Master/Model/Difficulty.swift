@@ -17,12 +17,13 @@ enum Level: Int, Codable {
 final class Difficulty {
     
     var level: Level
-    var score: Int?
     var category: Category?
+    var highScore: Int? = nil
+    var bestTime: Int = 0
+    var attempts: [Attempt] = []
     
-    init(level: Level, score: Int? = nil, category: Category? = nil) {
+    init(level: Level, category: Category? = nil) {
         self.level = level
-        self.score = score
         self.category = category
     }
 }
