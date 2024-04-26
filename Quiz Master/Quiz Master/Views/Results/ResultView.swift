@@ -133,11 +133,64 @@ extension ResultView {
         if isBestTime {
             difficulty.bestTime = newAttempt.totalTimeTaken
         }
-        
+    
+        achievementRewarding(attempt: newAttempt)
+        determineUnlocksAndDisplayAchievements(attempt: newAttempt)
         newAttempt.difficulty = difficulty
         context.insert(newAttempt)
+    }
+    
+    private func achievementRewarding(attempt: Attempt) {
         
-        if newAttempt.beatsMinScoreThreshold && difficulty.level != .hard {
+        //var newAchievements: [Achievement] = []
+        let currentLevel = difficulty.level
+        
+        if self.difficulty.attempts.isEmpty
+            &&
+            attempt.totalCorrectAnswer == QUESTION_COUNT {
+            var achievement2: AchievementType
+            
+            achievement2 = switch(currentLevel) {
+            case .medium:
+                AchievementType.allCorrectFirstTry
+            case .hard:
+                AchievementType.allCorrectFirstTryHard
+            default:
+                AchievementType.allCorrectFirstTry
+            }
+            
+            context.insert(
+                Achievement(
+                    type: achievement2,
+                    when: attempt.when)
+            )
+        }
+        
+        if attempt.beatsMinScoreThreshold
+            && attempt.totalTimeTaken <= MAX_TIMER_COUNT / 2 {
+            
+            var achievement1: AchievementType
+            
+            achievement1 = switch(currentLevel) {
+            case .medium:
+                AchievementType.beatUnderHalfOfTimerTotal
+            case .hard:
+                AchievementType.allCorrectFirstTryHard
+            default:
+                AchievementType.beatUnderHalfOfTimerTotalEasy}
+            
+            context.insert(
+                Achievement(
+                    type: achievement1,
+                    when: attempt.when
+                )
+            )
+        }
+    }
+    
+    private func determineUnlocksAndDisplayAchievements(attempt: Attempt) {
+        //MARK: Determine level unlock
+        if attempt.beatsMinScoreThreshold && difficulty.level != .hard {
             selectedCategory.difficulties.filter({
                 !$0.isUnlocked
             }).first?.isUnlocked = true

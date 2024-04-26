@@ -16,4 +16,5 @@ let SCORE_TO_BEAT = 1600 //* level
 enum Tab {
     case categories
     case leaderboard
+    case achievement
 }

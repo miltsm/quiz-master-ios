@@ -24,5 +24,10 @@ struct Leaderboard: View {
 }
 
 #Preview {
-    Leaderboard()
+    do {
+        let previewer = try Previewer()
+        return Leaderboard().modelContainer(previewer.container)
+    } catch {
+        return Text("Error")
+    }
 }

@@ -11,7 +11,7 @@ import SwiftData
 @MainActor
 let appContainer : ModelContainer = {
     do {
-        let container = try ModelContainer(for: Category.self, Difficulty.self, Attempt.self)
+        let container = try ModelContainer(for: Category.self, Difficulty.self, Attempt.self, Achievement.self)
         
         //MARK: Check if categories have been pre-populated
         var categoryFetchDesciptor = FetchDescriptor<Category>()

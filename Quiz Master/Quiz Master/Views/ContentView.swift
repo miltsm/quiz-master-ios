@@ -20,7 +20,16 @@ struct ContentView: View {
         NavigationStack(path: $router.path) {
             TabView(selection: $selection) {
                 CategoryList().tabItem { Label("Quiz", systemImage: "checklist") }.tag(Tab.categories)
-                Leaderboard().tabItem { Label("Leaderboard", systemImage: "trophy") }.tag(Tab.leaderboard)
+                
+                Leaderboard().tabItem {
+                    Label(
+                        "Leaderboard",
+                        systemImage: "arrow.up.arrow.down.square.fill")
+                }.tag(Tab.leaderboard)
+                
+                AchievementView().tabItem {
+                    Label("Achievement", systemImage: "trophy")
+                }.tag(Tab.achievement)
             }.navigationDestination(for: Router.Destination.self) { destination in
                 switch destination {
                 case .session(let category, let diff):

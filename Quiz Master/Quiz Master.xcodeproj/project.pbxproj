@@ -11,6 +11,9 @@
 		7D2BE3F42BDAB0DE0018CE31 /* LeaderboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2BE3F32BDAB0DE0018CE31 /* LeaderboardRow.swift */; };
 		7D5556552BD87AD20023E888 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556542BD87AD20023E888 /* TimerView.swift */; };
 		7D5556592BD916350023E888 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556582BD916350023E888 /* ResultView.swift */; };
+		7D590AC92BDB182F00169909 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D590AC82BDB182F00169909 /* Achievement.swift */; };
+		7D590ACC2BDB207F00169909 /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D590ACB2BDB207F00169909 /* AchievementView.swift */; };
+		7D590ACE2BDB241B00169909 /* AchievementBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D590ACD2BDB241B00169909 /* AchievementBadge.swift */; };
 		7D676DE12BD9A24300663FF6 /* Attempt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D676DE02BD9A24300663FF6 /* Attempt.swift */; };
 		7D9D02442BD3C7A700B4E649 /* LevelChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D02432BD3C7A700B4E649 /* LevelChip.swift */; };
 		7D9D02462BD3E8CD00B4E649 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9D02452BD3E8CD00B4E649 /* CategoryList.swift */; };
@@ -71,6 +74,9 @@
 		7D2BE3F32BDAB0DE0018CE31 /* LeaderboardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRow.swift; sourceTree = "<group>"; };
 		7D5556542BD87AD20023E888 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		7D5556582BD916350023E888 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		7D590AC82BDB182F00169909 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		7D590ACB2BDB207F00169909 /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
+		7D590ACD2BDB241B00169909 /* AchievementBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementBadge.swift; sourceTree = "<group>"; };
 		7D676DE02BD9A24300663FF6 /* Attempt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attempt.swift; sourceTree = "<group>"; };
 		7D9D02432BD3C7A700B4E649 /* LevelChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelChip.swift; sourceTree = "<group>"; };
 		7D9D02452BD3E8CD00B4E649 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
@@ -166,6 +172,15 @@
 			path = Results;
 			sourceTree = "<group>";
 		};
+		7D590ACA2BDB206D00169909 /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				7D590ACB2BDB207F00169909 /* AchievementView.swift */,
+				7D590ACD2BDB241B00169909 /* AchievementBadge.swift */,
+			);
+			path = Achievements;
+			sourceTree = "<group>";
+		};
 		7D9D02492BD3ED1B00B4E649 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +215,7 @@
 				7DC22B2C2BD3658A00CDBE5D /* Difficulty.swift */,
 				7DE5AAD82BD52ABC00C60222 /* Answer.swift */,
 				7D676DE02BD9A24300663FF6 /* Attempt.swift */,
+				7D590AC82BDB182F00169909 /* Achievement.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +223,7 @@
 		7DC22B2E2BD368D100CDBE5D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7D590ACA2BDB206D00169909 /* Achievements */,
 				7D2BE3F22BDAB0AF0018CE31 /* Leaderboards */,
 				7D5556572BD916270023E888 /* Results */,
 				7D9D024C2BD4090800B4E649 /* Quizzes */,
@@ -453,6 +470,8 @@
 				7DE5AACD2BD4D04300C60222 /* CategoryData.swift in Sources */,
 				7D9D02462BD3E8CD00B4E649 /* CategoryList.swift in Sources */,
 				7D9D024E2BD409F100B4E649 /* QuizView.swift in Sources */,
+				7D590ACC2BDB207F00169909 /* AchievementView.swift in Sources */,
+				7D590AC92BDB182F00169909 /* Achievement.swift in Sources */,
 				7DE5AAC22BD4B2A200C60222 /* Quiz.swift in Sources */,
 				7DC22B2D2BD3658A00CDBE5D /* Difficulty.swift in Sources */,
 				7DE5AAC72BD4C44600C60222 /* TestDownloader.swift in Sources */,
@@ -462,6 +481,7 @@
 				7DC22B362BD37F9C00CDBE5D /* CategoryDetail.swift in Sources */,
 				7DE5AAC92BD4C67500C60222 /* QuizViewModel.swift in Sources */,
 				7DC22B242BD3404000CDBE5D /* Category.swift in Sources */,
+				7D590ACE2BDB241B00169909 /* AchievementBadge.swift in Sources */,
 				7DE5AAB72BD48BB100C60222 /* Router.swift in Sources */,
 				7DC22B382BD3810100CDBE5D /* CategoryRow.swift in Sources */,
 				7DE5AAD72BD5126500C60222 /* PageControl.swift in Sources */,

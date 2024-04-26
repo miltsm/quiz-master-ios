@@ -16,6 +16,7 @@ class Attempt {
     let beatsMinScoreThreshold = false
     @Relationship(deleteRule: .nullify, inverse: \Difficulty.attempts)
     var difficulty: Difficulty? = nil
+    var achievements: [Achievement] = []
     
     init(
         score: Int,
